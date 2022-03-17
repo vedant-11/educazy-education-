@@ -1,6 +1,6 @@
 export default class UserModel {
-  constructor(name: String, email: String, jwtToken: String) {
-    this.name = name;
+  constructor(username: String, email: String, jwtToken: String) {
+    this.username = name;
     this.email = email;
     this.jwtToken = jwtToken;
   }

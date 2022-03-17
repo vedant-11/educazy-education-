@@ -2,7 +2,8 @@ import {action, makeObservable, observable} from 'mobx';
 import UserModel from '../models/UserModel';
 export class AuthState {
   isLogin: Boolean = false;
-  user: UserModel = null;
+  username: String = null;
+  jwt: String = null;
 
   constructor() {
     makeObservable(this, {
@@ -13,13 +14,15 @@ export class AuthState {
     });
   }
 
-  login(user: UserModel) {
-    this.user = user;
+  login(username, jwt) {
+    this.username = username;
+    this.jwt = jwt;
     this.isLogin = true;
   }
 
   logout() {
-    this.user = null;
+    this.username = null;
+    this.jwt = null;
     this.isLogin = false;
   }
 }

@@ -1,5 +1,7 @@
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Tts from 'react-native-tts';
+import {localPushNotifs} from './local_push_notifs';
 
 export async function requestUserPermission() {
   const authStatus = await messaging().requestPermission();
@@ -40,10 +42,11 @@ export const notificationListener = async () => {
     // navigation.navigate(remoteMessage.data.type);
   });
 
-  messaging().onMessage(remoteMessage => {
+  messaging().onMessage(async remoteMessage => {
+    Tts.speak(remoteMessage.notification.body);
     console.log('remote' + JSON.stringify(remoteMessage));
     console.log('recieved in foreground');
-    localPushNotifs(
+    await localPushNotifs(
       remoteMessage.notification.title,
       'Sample Subtitle',
       remoteMessage.notification.body,

@@ -1,6 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 
-export const getRequest = (url: String) => {
+export const GetRequest = (url: String) => {
   var resp;
   axios
     .get(url)
@@ -15,19 +16,14 @@ export const getRequest = (url: String) => {
   return resp;
 };
 
-export const postRequest = (url: String, body: Map) => {
+export const PostRequest = async (url: String, body: Map) => {
   var resp;
-  axios
-    .post(url, {
-      body,
-    })
-    .then(function (response) {
-      console.log(response);
-      resp = response;
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  console.log(body);
+  resp = await axios.post(url, {
+    body,
+  });
 
-  return resp;
+  console.log(resp.data);
+
+  return resp.data;
 };

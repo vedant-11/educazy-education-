@@ -3,10 +3,10 @@ import PushNotification, {Importance} from 'react-native-push-notification';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 export const localPushNotifs = (title, subtitle, message, imageUrl) => {
-  console.log('Image url ', imageUrl);
+  console.log('Title: ', title);
   PushNotification.localNotification({
     /* Android Only Properties */
-    channelId: 'channel-id', // (required) channelId, if the channel doesn't exist, notification will not trigger.
+    channelId: 'channel-id1', // (required) channelId, if the channel doesn't exist, notification will not trigger.
     ticker: 'My Notification Ticker', // (optional)
     showWhen: true, // (optional) default: true
     autoCancel: true, // (optional) default: true
@@ -59,7 +59,7 @@ export const localPushNotifs = (title, subtitle, message, imageUrl) => {
 export const createChannel = () => {
   PushNotification.createChannel(
     {
-      channelId: 'channel-id', // (required)
+      channelId: 'channel-id1', // (required)
       channelName: 'My channel', // (required)
       channelDescription: 'A channel to categorise your notifications', // (optional) default: undefined.
       playSound: false, // (optional) default: true
