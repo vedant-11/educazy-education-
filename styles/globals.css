@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Squada+One&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+* {
+  @apply font-poppins;
+}
+
+.textalign {
+  text-align: center;
+}
+
+.entry-image > * {
+  @apply max-w-md;
+}
+
+.form-signup > div > input {
+  @apply p-4 bg-white bg-opacity-60;
+  @apply w-3/5 mx-auto rounded-lg my-2;
+  @apply border-2 border-white text-black;
+}
+
+.form-signup > div > label {
+  @apply w-3/5 mx-auto hidden;
+}
