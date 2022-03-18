@@ -15,6 +15,7 @@ const navigationRef = createNavigationContainerRef();
 const {AlanManager, AlanEventEmitter} = NativeModules;
 const alanEventEmitter = new NativeEventEmitter(AlanEventEmitter);
 import * as RootNavigation from './RootNavigation.js';
+import Resources from '../screens/AppScreens/Resources';
 
 const Stack = createNativeStackNavigator();
 const subscription = alanEventEmitter.addListener('command', data => {
@@ -48,6 +49,11 @@ const AppStack = () => {
       <Stack.Screen
         name="CallScreen"
         component={CallScreen1}
+        options={{header: () => null}}
+      />
+      <Stack.Screen
+        name="Resources"
+        component={Resources}
         options={{header: () => null}}
       />
     </Stack.Navigator>

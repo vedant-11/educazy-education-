@@ -23,6 +23,7 @@
     "@tensorflow/tfjs-react-native": "^0.8.0",
     "axios": "^0.26.1",
     "faker": "^6.6.6",
+    "fingerpose": "^0.1.0",
     "mobx": "^6.4.2",
     "mobx-react": "^7.3.0",
     "react": "17.0.2",

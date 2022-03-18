@@ -22,7 +22,7 @@ function navigate(name) {
   }
 }
 
-function goBack(name) {
+function goBack() {
   if (navigationRef.canGoBack()) {
     navigationRef.goBack();
   } else {
@@ -32,7 +32,24 @@ function goBack(name) {
 const subscription = alanEventEmitter.addListener('command', data => {
   console.log(`got command event ${JSON.stringify(data)}`);
   // {"command":"showAlert","text":"text"}
-  navigationRef.navigate('Quiz');
+  if (data.route == 'test') {
+    navigationRef.navigate('TestPortal');
+  }
+  if (data.route == 'homepage') {
+    navigationRef.navigate('Home');
+  }
+  if (data.route == 'quiz') {
+    navigationRef.navigate('Quiz');
+  }
+  if (data.route == 'class') {
+    navigationRef.navigate('CallScreen');
+  }
+  if (data.route == 'res') {
+    navigationRef.navigate('Resources');
+  }
+  if (data.route == 'back') {
+    goBack();
+  }
 });
 
 const Routes = () => {

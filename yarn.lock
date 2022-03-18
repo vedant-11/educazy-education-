@@ -3613,6 +3613,11 @@
     "locate-path" "^6.0.0"
     "path-exists" "^4.0.0"
 
+"fingerpose@^0.1.0":
+  "integrity" "sha512-OXIRuRTgukBOo4xUO+vPchzHftZOPxO7VRh4HDjTg5NGr4gSkiY+LQShjsKAzmpRiRdmTgDh0dNsGpWa1Jsx3Q=="
+  "resolved" "https://registry.npmjs.org/fingerpose/-/fingerpose-0.1.0.tgz"
+  "version" "0.1.0"
+
 "flat-cache@^2.0.1":
   "integrity" "sha512-LoQe6yDuUMDzQAEH8sgmh4Md6oZnc/7PjtwjNFSzveXqSHt6ka9fPBuso7IGf9Rz4uqnSnWiFH2B/zj24a5ReA=="
   "resolved" "https://registry.npmjs.org/flat-cache/-/flat-cache-2.0.1.tgz"

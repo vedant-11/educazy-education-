@@ -9,6 +9,7 @@ import Resources from '../screens/AppScreens/Resources';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import TestPortal from '../screens/AppScreens/TestPortal';
 
 const BottomNavBar = () => {
   const Tab = createBottomTabNavigator();
@@ -60,7 +61,7 @@ const BottomNavBar = () => {
       />
       <Tab.Screen
         name="Tests"
-        component={TestScreen}
+        component={TestPortal}
         options={{
           tabBarLabel: 'Join Classes',
           tabBarIcon: ({focused}) => (
