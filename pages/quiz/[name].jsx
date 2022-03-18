@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getQuestions, getScores, updateTest } from "../../utils/api";
 import { parseCookies } from "nookies";
 import Router from "next/router";
 
-const quiz = () => {
+const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [current, setCurrent] = useState(0);
   const [marked, setMarked] = useState([]);
@@ -17,7 +17,7 @@ const quiz = () => {
       const questionData = await getQuestions(name, parseCookies().accessToken);
       setQuestions(questionData.data);
       questionData.data.map((question) =>
-        setMarked((old) => [...old, { _id: question._id, option: -1 }]),
+        setMarked((old) => [...old, { _id: question._id, option: -1 }])
       );
     })();
   }, []);
@@ -80,13 +80,13 @@ const quiz = () => {
                 const res = await getScores(
                   name,
                   marked,
-                  parseCookies().accessToken,
+                  parseCookies().accessToken
                 );
                 if (res.success) {
                   const update = await updateTest(
                     name,
                     { type: 2 },
-                    parseCookies().accessToken,
+                    parseCookies().accessToken
                   );
                   update.success && Router.push("/tests");
                 }
@@ -104,4 +104,4 @@ const quiz = () => {
   );
 };
 
-export default quiz;
+export default Quiz;
