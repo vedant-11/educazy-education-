@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import React, {Component} from 'react';
+import React, {Component, useRef, useState} from 'react';
 import {
   Platform,
   ScrollView,
@@ -9,6 +9,7 @@ import {
   PermissionsAndroid,
   NativeModules,
 } from 'react-native';
+import {RNCamera} from 'react-native-camera';
 // Import the RtcEngine class and view rendering components into your project.
 import RtcEngine, {
   RtcLocalView,
@@ -20,6 +21,9 @@ const dimensions = {
   width: Dimensions.get('window').width,
   height: Dimensions.get('window').height,
 };
+import Canvas from 'react-native-canvas';
+import HandImage from '../../handimage/index';
+import Handsigns from '../../handsigns';
 
 const requestCameraAndAudioPermission = async () => {
   try {
@@ -71,6 +75,8 @@ export default class CallScreen1 extends Component<Props, State> {
       peerIds: [],
       vidMute: false,
       audMute: false,
+      camState: 'on',
+      sign: null,
     };
     if (Platform.OS === 'android') {
       requestCameraAndAudioPermission().then(() => {
@@ -78,6 +84,86 @@ export default class CallScreen1 extends Component<Props, State> {
       });
     }
   }
+
+  // //SIGN LANGUAGE DETECTION
+  // //@tensorflow/tfjs @tensorflow-models/handpose fingerpose
+  // const webcamRef = useRef(null)
+  // const canvasRef = useRef(null)
+
+  // let signList = []
+  // let currentSign = 0
+
+  // let gamestate = "played"
+
+  // async function runHandpose() {
+  //   const net = await handpose.load()
+  //   // window.requestAnimationFrame(loop);
+  //   setInterval(() => {
+  //     detect(net)
+  //   }, 100)
+  // }
+  // async function detect(net) {
+  //   // Check data is available
+  //   if (
+  //     typeof webcamRef.current !== "undefined" &&
+  //     webcamRef.current !== null &&
+  //     webcamRef.current.video.readyState === 4
+  //   ) {
+  //     // Get Video Properties
+  //     const video = webcamRef.current.video
+  //     const videoWidth = webcamRef.current.video.videoWidth
+  //     const videoHeight = webcamRef.current.video.videoHeight
+
+  //     // Set video width
+  //     webcamRef.current.video.width = videoWidth
+  //     webcamRef.current.video.height = videoHeight
+
+  //     // Set canvas height and width
+  //     canvasRef.current.width = videoWidth
+  //     canvasRef.current.height = videoHeight
+
+  //     // Make Detections
+  //     const hand = await net.estimateHands(video)
+
+  //     if (hand.length > 0) {
+  //       //loading the fingerpose model
+  //       const GE = new fp.GestureEstimator([
+  //         fp.Gestures.ThumbsUpGesture,
+  //         Handsigns.aSign,Handsigns.bSign,Handsigns.cSign,
+  //         Handsigns.dSign,Handsigns.eSign,Handsigns.fSign,
+  //         Handsigns.gSign,Handsigns.hSign,Handsigns.iSign,
+  //         Handsigns.jSign,Handsigns.kSign,Handsigns.lSign,
+  //         Handsigns.mSign,Handsigns.nSign,Handsigns.oSign,
+  //         Handsigns.pSign,Handsigns.qSign,Handsigns.rSign,
+  //         Handsigns.sSign,Handsigns.tSign,Handsigns.uSign,
+  //         Handsigns.vSign,Handsigns.wSign,Handsigns.xSign,
+  //         Handsigns.ySign,Handsigns.zSign,
+  //       ])
+  //       const estimatedGestures = await GE.estimate(hand[0].landmarks, 6.5)
+
+  //       if (
+  //         estimatedGestures.gestures !== undefined &&
+  //         estimatedGestures.gestures.length > 0
+  //       ) {
+  //         const confidence = estimatedGestures.gestures.map(p => p.confidence)
+  //         const maxConfidence = confidence.indexOf(
+  //           Math.max.apply(undefined, confidence)
+  //         )
+  //           setSign(estimatedGestures.gestures[maxConfidence].name)
+  //         }
+  //       }
+  //     }
+  //     // Draw hand lines
+
+  //     drawHand(hand, ctx)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   runHandpose()
+  // }, [])
+
+  //SIGN LANGUAGE DETECTION ENDS
 
   render() {
     return (
@@ -144,17 +230,24 @@ export default class CallScreen1 extends Component<Props, State> {
 
   render() {
     return (
-      <View style={styles.max}>
+      <View>
+        <Canvas
+          ref={canvas => {
+            const ctx = canvas.getContext('2d');
+          }}
+        />
         <View style={styles.max}>
-          <View style={styles.buttonHolder}>
-            <TouchableOpacity onPress={this.startCall} style={styles.button}>
-              <Text style={styles.buttonText}> Start Call </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={this.endCall} style={styles.button}>
-              <Text style={styles.buttonText}> End Call </Text>
-            </TouchableOpacity>
+          <View style={styles.max}>
+            <View style={styles.buttonHolder}>
+              <TouchableOpacity onPress={this.startCall} style={styles.button}>
+                <Text style={styles.buttonText}> Start Call </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={this.endCall} style={styles.button}>
+                <Text style={styles.buttonText}> End Call </Text>
+              </TouchableOpacity>
+            </View>
+            {this._renderVideos()}
           </View>
-          {this._renderVideos()}
         </View>
       </View>
     );
@@ -171,6 +264,18 @@ export default class CallScreen1 extends Component<Props, State> {
           channelId={this.state.channelName}
           renderMode={VideoRenderMode.Hidden}
         />
+        {/* <TensorCamera
+                  style={styles.camera}
+                  type={RNCamera.Constants.Type.back}
+                  zoom={0}
+                  cameraTextureHeight={textureDims.height}
+                  cameraTextureWidth={textureDims.width}
+                  resizeHeight={tensorDims.height}
+                  resizeWidth={tensorDims.width}
+                  resizeDepth={3}
+                  onReady={(imageAsTensors) => handleCameraStream(imageAsTensors)}
+                  autorender={true}
+                /> */}
         {this._renderRemoteVideos()}
       </View>
     ) : null;

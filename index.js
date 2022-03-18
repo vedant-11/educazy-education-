@@ -9,7 +9,10 @@ import {name as appName} from './app.json';
 import PushNotification, {Importance} from 'react-native-push-notification';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import messaging from '@react-native-firebase/messaging';
-import {localPushNotifs, createChannel} from './src/utils/localPushNotifs.js';
+import {
+  localPushNotifs,
+  createChannel,
+} from './services/notification/local_push_notifs';
 import Tts from 'react-native-tts';
 
 //Register background handler

@@ -11,24 +11,10 @@ import React, {useState, useEffect} from 'react';
 import BottomNavBar from '../../components/BottomNavBar';
 import CustomButton from '../../components/CustomButton';
 import Events from './Events';
-import {NativeEventEmitter, NativeModules} from 'react-native';
-const {AlanManager, AlanEventEmitter} = NativeModules;
 
 const HomeScreen = ({navigation}) => {
   console.log('navigation: ', navigation);
 
-  var subscription = new NativeEventEmitter(AlanEventEmitter).addListener(
-    'onCommand',
-    data => {
-      navigation.navigate('Quiz');
-      console.log(`onCommand: ${JSON.stringify(data)}`);
-    },
-  );
-  useEffect(() => {
-    subscription.apply();
-
-    return () => subscription.remove();
-  }, []);
   const [classCode, setclassCode] = useState('');
   return (
     <ScrollView>
