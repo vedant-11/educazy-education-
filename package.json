@@ -14,7 +14,6 @@
     "@chakra-ui/react": "^1.8.6",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
-    "agora-rtc-react": "github:AgoraIO-Community/agora-rtc-react#v1.0.1",
     "axios": "^0.26.1",
     "formik": "^2.2.9",
     "framer-motion": "^6.2.8",

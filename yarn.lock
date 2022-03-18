@@ -1019,17 +1019,6 @@ acorn@^8.7.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.0.tgz#90951fde0f8f09df93549481e5fc141445b791cf"
   integrity sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==
 
-"agora-rtc-react@github:AgoraIO-Community/agora-rtc-react#v1.0.1":
-  version "1.0.1"
-  resolved "git+ssh://git@github.com/AgoraIO-Community/agora-rtc-react.git#3fe3c8048e5f6d37d56205e7dd7dd90e8dc49a98"
-  dependencies:
-    agora-rtc-sdk-ng "^4.3.0"
-
-agora-rtc-sdk-ng@^4.3.0:
-  version "4.9.4"
-  resolved "https://registry.npmjs.org/agora-rtc-sdk-ng/-/agora-rtc-sdk-ng-4.9.4.tgz"
-  integrity sha512-2KjrOScvvtyo5Meil7PCRrJeVbkXjU0KieFpdiwdV2E3q/EsPbaXhoTvgStcwd1We3aV7zUJyT224KE9P9rJ+Q==
-
 ajv@^6.10.0, ajv@^6.12.4:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
