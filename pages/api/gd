@@ -1,3 +1,0 @@
-const [questions, setQuestions] = useState([]);
-  const [current, setCurrent] = useState(0);
-  const [marked, setMarked] = useState([]);
