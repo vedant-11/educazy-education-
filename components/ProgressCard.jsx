@@ -23,7 +23,10 @@ const ProgressCard = ({ scores, user }) => {
         <h2 className="text-3xl my-16">Normalized Marks</h2>
         <div className="flex w-full justify-evenly flex-wrap">
           {scores.map((score) => (
-            <div className="bg-blue-600 justify-center w-32 flex items-center rounded-full text-white text-center aspect-square">
+            <div
+              key={score}
+              className="bg-blue-600 justify-center w-32 flex items-center rounded-full text-white text-center aspect-square"
+            >
               <p>{score.name}</p>
               <p>{score.score}</p>
             </div>
