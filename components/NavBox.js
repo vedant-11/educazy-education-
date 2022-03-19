@@ -30,9 +30,15 @@ const NavBox = () => {
             </div>
           </div>
 
-          <p className="text-center font-poppins mt-2 text-[#525252]  ">
-            Join Class
-          </p>
+          <a
+            href="https://educazy-classes.netlify.app/94d01b37-3326-435e-8b63-491cb3b1a5c3"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p className="text-center font-poppins mt-2 text-[#525252]  ">
+              Join Class
+            </p>
+          </a>
         </div>
         <div>
           <button
