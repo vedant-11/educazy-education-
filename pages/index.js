@@ -24,9 +24,15 @@ export default function Home() {
               className="bg-white/60 text-[#8D8D8D] px-4 drop-shadow-2xl rounded-sm h-10 w-96"
               placeholder="Ecyz-219"
             />
-            <button className="bg-[#62C733] h-10 text-white rounded-sm drop-shadow-2xl ml-4 font-poppins w-40">
-              Enter class
-            </button>
+            <a
+              href="https://educazy.herokuapp.com/api"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="bg-[#62C733] h-10 text-white rounded-sm drop-shadow-2xl ml-4 font-poppins w-40">
+                Enter class
+              </button>
+            </a>
           </div>
         </div>
         <div className="w-96 mr-24 ">

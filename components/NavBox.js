@@ -24,21 +24,21 @@ const NavBox = () => {
     <nav className=" flex justify-center mt-20">
       <div className="w-3/4 h-60 bg-white/60 flex justify-evenly items-center drop-shadow-2xl rounded-sm ">
         <div>
-          <div className="h-36 w-28 transition ease-in-out hover:-translate-y-1 duration-300 bg-[#EAEAEA] border-2 flex  justify-center items-center hover:scale-110 hover:bg-gradient-to-b from-[#FF3624] to-[#FF8C4A]">
-            <div className=" w-16">
-              <Image src={classroom} layout="responsive" />
-            </div>
-          </div>
-
           <a
             href="https://educazy-classes.netlify.app/94d01b37-3326-435e-8b63-491cb3b1a5c3"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <p className="text-center font-poppins mt-2 text-[#525252]  ">
-              Join Class
-            </p>
+            <div className="h-36 w-28 transition ease-in-out hover:-translate-y-1 duration-300 bg-[#EAEAEA] border-2 flex  justify-center items-center hover:scale-110 hover:bg-gradient-to-b from-[#FF3624] to-[#FF8C4A]">
+              <div className=" w-16">
+                <Image src={classroom} layout="responsive" />
+              </div>
+            </div>
           </a>
+
+          <p className="text-center font-poppins mt-2 text-[#525252]  ">
+            Join Class
+          </p>
         </div>
         <div>
           <button
