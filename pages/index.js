@@ -25,7 +25,7 @@ export default function Home() {
               placeholder="Ecyz-219"
             />
             <a
-              href="https://educazy.herokuapp.com/api"
+              href="https://educazy-classes.netlify.app/94d01b37-3326-435e-8b63-491cb3b1a5c3"
               target="_blank"
               rel="noopener noreferrer"
             >
