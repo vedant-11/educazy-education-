@@ -2,7 +2,7 @@ import axios from "axios";
 import { setCookie } from "nookies";
 
 export const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  baseURL: "https://educazy.herokuapp.com/api",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
